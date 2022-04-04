@@ -5,10 +5,10 @@
     'author': "Arxi",
     'website': "https://www.arxi.pt",
     'category': 'Hidden',
-    'version': '15.0.0.0.1',
+    'version': '15.0.0.0.2',
     'license': 'OPL-1',
     'currency': 'EUR',
-    'depends': ['stock'],
+    'depends': ['mail'],
     'data': [
     ],
 }

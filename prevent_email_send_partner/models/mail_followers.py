@@ -7,14 +7,14 @@ _logger = logging.getLogger(__name__)
 
 
 class Followers(models.Model):
-    _inherit = 'mail.followers'
+    _inherit = 'mail.thread'
 
-    def _get_recipient_data(self, records, message_type, subtype_id, pids=None):
-        res = super(Followers, self)._get_recipient_data(records, message_type, subtype_id, pids=pids)
-        _logger.info(f"IM RUNINT WITH {records} and my pids are {pids}")
-        _logger.info(f"THE DATA THAT I GOT FROM SUPER IS {res}")
-        # for pid, active, pshare, notif, groups in res:
-        return res
+    def _notify_compute_recipients(self, message, msg_vals):
+        recipients_data = super(Followers, self)._notify_compute_recipients(message, msg_vals)
+        _logger.info(f"At _notify_compute_recipients i got the message [{message}] and the vals are [{msg_vals}]")
+        _logger.info(f"--------From super i got {recipients_data}")
+
+        return recipients_data
 
 
 
