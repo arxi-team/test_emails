@@ -1,0 +1,6 @@
+<odoo noupdate="1">
+    <record id="no_route_email_activity_user" model="ir.config_parameter">
+        <field name="key">no_route_emails.user</field>
+        <field name="value">1</field>
+    </record>
+</odoo>

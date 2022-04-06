@@ -1,0 +1,61 @@
+<odoo>
+    <record id="no_route_email_tree" model="ir.ui.view">
+        <field name="name">no_route_email_tree</field>
+        <field name="model">no.route.email</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email_from"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="no_route_email_form" model="ir.ui.view">
+        <field name="name">no_route_email_form</field>
+        <field name="model">no.route.email</field>
+        <field name="arch" type="xml">
+            <form edit="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="email_from"/>
+                            <field name="date"/>
+                        </group>
+
+                        <group>
+                            <field name="email_to"/>
+                            <field name="email_cc"/>
+                        </group>
+                        <field name="body" type="html" class="oe_memo"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" />
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="no_route_emailsaction" model="ir.actions.act_window">
+        <field name="name">No Route Emails</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">no.route.email</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_no_route_emails_root"
+        name="No Route Emails"
+        web_icon="no_route_emails,static/description/icon.png"
+        groups="base.group_system"
+        sequence="6"/>
+
+
+    <menuitem id="menu_no_route_emails" name="No Route Emails" action="no_route_emailsaction"
+              parent="no_route_emails.menu_no_route_emails_root" sequence="1"/>
+
+</odoo>
